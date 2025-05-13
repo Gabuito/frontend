@@ -1,2 +1,17 @@
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
+
+.navbar-icon {
+  font-size: 2rem !important;
+  @apply text-neutral-900 dark:text-neutral-50;
+}
+
+.carousel-icon {
+  font-size: 3rem !important;
+  @apply text-neutral-900 dark:text-neutral-50;
+  @media screen and (max-width: 640px) {
+    font-size: 1rem !important;
+    @apply text-neutral-900 dark:text-neutral-50;
+  }
+}
