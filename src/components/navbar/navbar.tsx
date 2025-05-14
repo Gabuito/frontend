@@ -1,6 +1,6 @@
 import { useDrawer } from "@/contexts/drawerContext";
 import MenuButton from "./buttons/menu";
-import { Logo, MiniLogo } from "./logo";
+import { Logo, MiniLogo } from "@/components/logo/logo";
 import {
   CenterNavbarContainer,
   LeftNavbarContainer,
