@@ -1,0 +1,28 @@
+@layer components {
+  .carousel {
+    @apply size-full;
+
+    &.colors {
+      @apply bg-neutral-50 dark:bg-neutral-800;
+    }
+
+    &.responsive {
+      @apply w-full max-w-full h-32 lg:h-20;
+    }
+
+    .c-container {
+      @apply relative container mx-auto flex items-center;
+
+      &.responsive {
+        @apply h-56 sm:h-80 lg:h-48 xl:h-80 overflow-hidden;
+      }
+    }
+
+    .navigators {
+      @apply absolute flex w-full justify-center-safe bottom-0 px-4 py-0.5 rounded-b-lg gap-1 z-10;
+    }
+
+    .selectors {
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useDrawer } from "@/contexts/drawerContext";
-import MenuButton from "./buttons/menu";
+import MenuButton from "../button/menu";
 import { Logo, MiniLogo } from "@/components/logo/logo";
 import {
   CenterNavbarContainer,
@@ -7,7 +7,7 @@ import {
   RightNavbarContainer,
   SubNavbarContainer,
 } from "./containers";
-import InteractiveSubContainer from "./spaces/interactive";
+import InteractiveSubContainer from "./spaces/toolbar";
 import UserSubContainer from "./spaces/user";
 import SearchSubContainer from "./spaces/search";
 
@@ -16,9 +16,9 @@ export default function Navbar() {
 
   return (
     <>
-      <div className='sticky top-0 left-0 w-full h-32 lg:h-20 z-20 bg-neutral-50 dark:bg-neutral-900 flex flex-col'>
+      <div className='navbar colors responsive'>
         <div className='container mx-auto h-2/3 lg:h-full flex flex-col'>
-          <div className='flex flex-row justify-between items-center h-full mx-4'>
+          <div className='flex flex-between-row size-full px-1'>
             <LeftNavbarContainer>
               <MenuButton setDrawerOpen={setDrawerOpen} />
               <Logo />
@@ -37,7 +37,11 @@ export default function Navbar() {
         </div>
 
         <SubNavbarContainer>
-          <h1>Espaço para buscar</h1>
+          <input
+            className='w-full h-full px-10 sm:px-[30dvw]'
+            placeholder='Buscar...'
+            type='text'
+          />
         </SubNavbarContainer>
       </div>
     </>

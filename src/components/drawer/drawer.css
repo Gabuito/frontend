@@ -1,0 +1,52 @@
+@layer components {
+  .drawer {
+    @apply fixed top-0 left-0 h-full transition-transform duration-300 transform-gpu ease-in-out bg-white dark:bg-neutral-900 shadow-lg overflow-hidden z-50;
+    overflow-y: auto;
+    &.open {
+      @apply translate-x-0;
+    }
+    &.close {
+      @apply -translate-x-full;
+    }
+    &.responsive {
+      @apply w-6/7 sm:w-3/4 md:w-3/4 lg:w-2/3 xl:w-1/2 2xl:w-1/4;
+    }
+    &.colors {
+      @apply text-neutral-900 dark:text-white bg-white dark:bg-neutral-900;
+    }
+    .header {
+      @apply flex justify-between items-center px-12 py-4 border-b border-neutral-200 dark:border-neutral-700;
+    }
+
+    .container-drawer {
+      @apply flex flex-col h-full w-full;
+    }
+    .drawer-link {
+      @apply px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700;
+    }
+    .drawer-btn {
+      @apply flex items-center gap-2 text-white px-4 py-2 rounded shadow transition-colors duration-200 border-none focus:outline-none focus:ring-2;
+    }
+    .drawer-btn-blue {
+      @apply bg-blue-600 hover:bg-blue-700 focus:ring-blue-400;
+    }
+    .drawer-btn-red {
+      @apply bg-red-600 hover:bg-red-700 focus:ring-red-400;
+    }
+    .drawer-btn-green {
+      @apply bg-green-600 hover:bg-green-700 focus:ring-green-400;
+    }
+    .drawer-close-btn {
+      @apply flex items-center border-2 border-neutral-500 p-2 rounded-full cursor-pointer hover:scale-110 focus:-translate-y-1 transform-gpu transition-all;
+    }
+    .drawer-switch {
+      @apply relative inline-flex items-center h-6 w-11 rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 focus:ring-blue-500;
+    }
+    .drawer-switch-thumb {
+      @apply inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-200 ease-in-out;
+    }
+    .sm-icon {
+      font-size: 1rem !important;
+    }
+  }
+}

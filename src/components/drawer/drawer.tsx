@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useDrawer } from "@/contexts/drawerContext";
 import { useTheme } from "@/contexts/themeContext";
-import { drawerDefault, drawerSizeRes, drawerTheme } from "@/syles/drawerClass";
 
-type MouseEvent =
-  | React.MouseEvent<HTMLAnchorElement>
-  | React.MouseEvent<HTMLButtonElement>;
+// type MouseEvent =
+//   | React.MouseEvent<HTMLAnchorElement>
+//   | React.MouseEvent<HTMLButtonElement>;
 
 export default function Drawer() {
   const { drawerOpen, setDrawerOpen } = useDrawer();
@@ -32,12 +30,12 @@ export default function Drawer() {
     }
   }, []);
 
-  const handleHomeClick = (e: MouseEvent): void => {
-    if (window.location.pathname === "/") {
-      e.preventDefault();
-      setDrawerOpen(false);
-    }
-  };
+  // const handleHomeClick = (e: MouseEvent): void => {
+  //   if (window.location.pathname === "/") {
+  //     e.preventDefault();
+  //     setDrawerOpen(false);
+  //   }
+  // };
 
   // Added: Handler for Dark Mode switch
   const handleDarkModeToggle = () => {
@@ -71,16 +69,14 @@ export default function Drawer() {
   return (
     <>
       <div
-        className={`${drawerDefault + drawerSizeRes + drawerTheme} ${
-          drawerOpen ? "translate-x-0" : "-translate-x-full"
-        } z-50`}>
-        <div className='flex flex-col h-full'>
-          <div className='flex items-center justify-between p-4 border-b border-neutral-300 dark:border-neutral-700'>
+        className={`drawer responsive colors ${drawerOpen ? "open" : "close"}`}>
+        <div className='container-drawer'>
+          <div className='w-full flex-between header border-b-default'>
             {/* componente de login */}
-            <div className='flex items-center gap-2'>
+            <div className='flex gap-2'>
               {!isAuthenticated && (
                 <button
-                  className='flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow transition-colors duration-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-400'
+                  className='drawer-btn drawer-btn-blue'
                   onClick={() => setIsAuthenticated(true)}>
                   <span className='material-symbols-outlined'>login</span>
                   Entrar
@@ -88,7 +84,7 @@ export default function Drawer() {
               )}
               {isAuthenticated && (
                 <button
-                  className='flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded shadow transition-colors duration-200 border-none focus:outline-none focus:ring-2 focus:ring-red-400'
+                  className='drawer-btn drawer-btn-red'
                   onClick={() => setIsAuthenticated(false)}>
                   <span className='material-symbols-outlined'>logout</span>
                   Sair
@@ -98,7 +94,7 @@ export default function Drawer() {
 
             <div className='relative group'>
               <button
-                className='flex items-center border-2 border-neutral-500 p-2 rounded-full cursor-pointer hover:scale-110 focus:-translate-y-1 transform-gpu transition-all'
+                className='drawer-close-btn'
                 onClick={() => setDrawerOpen(false)}
                 aria-label='Fechar menu'>
                 <span className='material-symbols-outlined'>close</span>
@@ -108,61 +104,147 @@ export default function Drawer() {
               </div>
             </div>
           </div>
-          <nav className='flex flex-col gap-2 p-4 border-b border-neutral-700/20 dark:border-neutral-300/20 '>
-            <Link
-              href='/'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'
-              onClick={handleHomeClick}>
-              Home
-            </Link>
-            <Link
-              href='/about'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'>
-              Sobre
-            </Link>
-            <Link
-              href='/contact'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'>
-              Contato
-            </Link>
-          </nav>
-          <nav className='flex flex-col gap-2 p-4'>
-            <a
-              href='#'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'>
-              Home
-            </a>
-            <a
-              href='#'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'>
-              About
-            </a>
-            <a
-              href='#'
-              className='px-2 py-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700'>
-              Contact
-            </a>
-            <div className='flex flex-col gap-2 mt-4 lg:hidden'>
-              {!isAuthenticated && (
-                <>
-                  <button
-                    className='flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow transition-colors duration-200 border-none focus:outline-none focus:ring-2 focus:ring-blue-400'
-                    onClick={() => setIsAuthenticated(true)}>
-                    <span className='material-symbols-outlined'>login</span>
-                    Entrar
-                  </button>
-                  <button className='flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow transition-colors duration-200 border-none focus:outline-none focus:ring-2 focus:ring-green-400'>
-                    <span className='material-symbols-outlined'>
-                      person_add
-                    </span>
-                    Cadastrar
-                  </button>
-                </>
-              )}
-            </div>
-          </nav>
 
-          {/* Added: Aparência Section */}
+          {/* Segmento: Categorias */}
+          <div className='p-4 border-t border-neutral-300/30 dark:border-neutral-700/30'>
+            <h3 className='text-xs font-semibold uppercase text-neutral-500 dark:text-neutral-400 mb-3 tracking-wider'>
+              Categorias
+            </h3>
+            <div className='grid grid-cols-2 gap-4 md:grid-cols-3'>
+              {/* Coluna 1 */}
+              <div>
+                <div className='font-semibold text-neutral-700 dark:text-neutral-200 mb-1'>
+                  Imóveis
+                </div>
+                <ul className='space-y-1 text-sm text-neutral-600 dark:text-neutral-300'>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Casas
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Apartamentos
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Terrenos
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {/* Coluna 2 */}
+              <div>
+                <div className='font-semibold text-neutral-700 dark:text-neutral-200 mb-1'>
+                  Automóveis
+                </div>
+                <ul className='space-y-1 text-sm text-neutral-600 dark:text-neutral-300'>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Carros
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Motos
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Peças
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              {/* Coluna 3 */}
+              <div>
+                <div className='font-semibold text-neutral-700 dark:text-neutral-200 mb-1'>
+                  Eletrônicos
+                </div>
+                <ul className='space-y-1 text-sm text-neutral-600 dark:text-neutral-300'>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Celulares
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      Computadores
+                    </a>
+                  </li>
+                  <li>
+                    <a href='#' className='hover:underline'>
+                      TVs
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className='mt-4'>
+              <a
+                href='#'
+                className='block text-center text-blue-600 hover:underline font-medium text-sm'>
+                Ver todos
+              </a>
+            </div>
+          </div>
+
+          {/* Segmento: Sobre / Perfil */}
+          <div className='p-4 border-t border-neutral-300/30 dark:border-neutral-700/30'>
+            {isAuthenticated ? (
+              <div className='bg-blue-50 dark:bg-neutral-800 rounded-lg p-4 flex flex-col items-center text-center'>
+                <div className='w-16 h-16 rounded-full bg-blue-200 dark:bg-neutral-700 flex items-center justify-center mb-2'>
+                  <span className='material-symbols-outlined text-4xl text-blue-600 dark:text-blue-400'>
+                    account_circle
+                  </span>
+                </div>
+                <div className='font-semibold text-neutral-800 dark:text-neutral-100 mb-1'>
+                  Bem-vindo!
+                </div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-300 mb-3'>
+                  Acesse sua dashboard para gerenciar seus anúncios.
+                </div>
+                <a
+                  href='/dashboard'
+                  className='drawer-btn drawer-btn-blue w-full'>
+                  Ir para Dashboard
+                  <span className='material-symbols-outlined sm-icon'>
+                    keyboard_arrow_right
+                  </span>
+                </a>
+              </div>
+            ) : (
+              <div className='bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 flex flex-col items-center text-center'>
+                <div className='w-16 h-16 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center mb-2'>
+                  <span className='material-symbols-outlined text-4xl text-neutral-500 dark:text-neutral-300'>
+                    person_add
+                  </span>
+                </div>
+                <div className='font-semibold text-neutral-800 dark:text-neutral-100 mb-1'>
+                  Crie sua conta
+                </div>
+                <div className='text-sm text-neutral-600 dark:text-neutral-300 mb-3'>
+                  Cadastre-se ou entre para anunciar e acompanhar seus
+                  favoritos.
+                </div>
+                <div className='flex gap-2 w-full'>
+                  <a
+                    href='/login'
+                    className='drawer-btn drawer-btn-blue flex-1'>
+                    Entrar
+                  </a>
+                  <a
+                    href='/register'
+                    className='drawer-btn drawer-btn-outline flex-1'>
+                    Criar conta
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Segmento: Aparência */}
           <div className='mt-auto p-4 border-t border-neutral-300/30 dark:border-neutral-700/30'>
             <h3 className='text-xs font-semibold uppercase text-neutral-500 dark:text-neutral-400 mb-3 tracking-wider'>
               Aparência
@@ -195,7 +277,7 @@ export default function Drawer() {
                   }
                   disabled={isDarkModeSwitchDisabled}
                   onClick={handleDarkModeToggle}
-                  className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 focus:ring-blue-500 ${
+                  className={`drawer-switch ${
                     mounted && isDarkModeEffectivelyOn
                       ? "bg-blue-600"
                       : "bg-neutral-400 dark:bg-neutral-600"
@@ -206,7 +288,7 @@ export default function Drawer() {
                   }`}>
                   <span className='sr-only'>Modo Escuro</span>
                   <span
-                    className={`inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-200 ease-in-out ${
+                    className={`drawer-switch-thumb ${
                       mounted && isDarkModeEffectivelyOn
                         ? "translate-x-6"
                         : "translate-x-1"
@@ -233,14 +315,14 @@ export default function Drawer() {
                     mounted && theme === "system" ? "true" : "false"
                   }
                   onClick={handleSystemThemeToggle}
-                  className={`relative inline-flex items-center h-6 w-11 rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-neutral-900 focus:ring-blue-500 ${
+                  className={`drawer-switch ${
                     mounted && theme === "system"
                       ? "bg-blue-600"
                       : "bg-neutral-400 dark:bg-neutral-600"
                   } hover:bg-opacity-80`}>
                   <span className='sr-only'>Tema Padrão do Navegador</span>
                   <span
-                    className={`inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-200 ease-in-out ${
+                    className={`drawer-switch-thumb ${
                       mounted && theme === "system"
                         ? "translate-x-6"
                         : "translate-x-1"
@@ -249,6 +331,19 @@ export default function Drawer() {
                 </button>
               </div>
             </div>
+          </div>
+
+          {/* Segmento: Rodapé com redes sociais */}
+          <div className='p-4 border-t border-neutral-300/30 dark:border-neutral-700/30 flex items-center justify-center gap-4'>
+            <h1 className='font-extralight'>Repositório do Projeto </h1>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='invert-0 dark:invert-100 w-6 h-6 hover:fill-sky-700 transition-colors duration-200 cursor-pointer'
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'>
+              <path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-4.466 19.59c-.405.078-.534-.171-.534-.384v-2.195c0-.747-.262-1.233-.55-1.481 1.782-.198 3.654-.875 3.654-3.947 0-.874-.312-1.588-.823-2.147.082-.202.356-1.016-.079-2.117 0 0-.671-.215-2.198.82-.64-.18-1.324-.267-2.004-.271-.68.003-1.364.091-2.003.269-1.528-1.035-2.2-.82-2.2-.82-.434 1.102-.16 1.915-.077 2.118-.512.56-.824 1.273-.824 2.147 0 3.064 1.867 3.751 3.645 3.954-.229.2-.436.552-.508 1.07-.457.204-1.614.557-2.328-.666 0 0-.423-.768-1.227-.825 0 0-.78-.01-.055.487 0 0 .525.246.889 1.17 0 0 .463 1.428 2.688.944v1.489c0 .211-.129.459-.528.385-3.18-1.057-5.472-4.056-5.472-7.59 0-4.419 3.582-8 8-8s8 3.581 8 8c0 3.533-2.289 6.531-5.466 7.59z' />
+            </svg>
           </div>
         </div>
       </div>
