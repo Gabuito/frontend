@@ -1,8 +1,6 @@
-"use client";
-
 import { Carousel } from "@/app/(web)/(home)/components/carousel/carousel";
+import { Latest } from "@/app/(web)/(home)/components/sections/latest";
 import { Banner } from "@/app/(web)/(home)/components/banner/banner";
-import { Card } from "@/components/card/card";
 
 const heroList = [
   <Banner key='banner' />,
@@ -15,38 +13,18 @@ export default function Home() {
   return (
     <>
       <Carousel items={heroList} />
-      {/* <NewItems />
-      <CategoryList />
-      <History */}
-      <div className='container mx-auto'>
+      <div className='container mx-auto flex flex-col gap-4 py-8'>
         <div>
-          <h1 className='text-3xl font-bold py-7 px-3 dark:text-neutral-50 '>
-            🚀 Novos anúncios
-          </h1>
-          <div className='w-full max-w-full mx-auto overflow-x-scroll overflow-y-auto overscroll-auto flex flex-row gap-2 px-4 py-2'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+          <div className='flex flex-col w-fit py-4'>
+            <h1 className='flex text-3xl font-semibold dark:text-neutral-50'>
+              Ultimos anúncios
+            </h1>
+            <h3 className='dark:text-neutral-50/50 font-light text-lg'>
+              Novidades na área
+            </h3>
           </div>
-        </div>
-        <div>
-          <h1 className='text-3xl font-bold py-7 px-3 dark:text-neutral-50 '>
-            🔥 Em Alta
-          </h1>
-          <div className='w-full max-w-full mx-auto overflow-x-scroll overscroll-y-none flex flex-row gap-2 px-4 py-2'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+          <div className='w-full max-w-full mx-auto overflow-x-scroll overflow-y-auto overscroll-auto flex flex-row   py-2 xl:overflow-x-hidden xl:justify-between h-104'>
+            <Latest />
           </div>
         </div>
       </div>

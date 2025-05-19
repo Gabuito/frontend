@@ -91,3 +91,56 @@
     width: 100%;
   }
 }
+
+/*Animation for typewriter effect */
+
+@keyframes caret-blink {
+  from,
+  to {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: #737373;
+  }
+}
+
+@keyframes placeholder-typing {
+  0% {
+    width: 0%;
+    opacity: 0;
+  }
+  5% {
+    width: 0%;
+    opacity: 1;
+  }
+  35% {
+    width: 100%;
+    opacity: 1;
+  }
+  85% {
+    width: 100%;
+    opacity: 1;
+  }
+  97% {
+    width: 0%;
+    opacity: 1;
+  }
+  100% {
+    width: 0%;
+    opacity: 0;
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  @apply border-r border-neutral-500;
+  animation: placeholder-typing 7s steps(40, end) 1 forwards,
+    caret-blink 0.75s step-end infinite;
+}
+
+.loading-icon {
+  font-size: 4rem !important;
+}

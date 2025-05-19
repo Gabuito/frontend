@@ -1,15 +1,15 @@
 import { useDrawer } from "@/contexts/drawerContext";
 import MenuButton from "../button/menu";
-import { Logo, MiniLogo } from "@/components/logo/logo";
+import { Logo } from "@/components/logo/logo";
 import {
   CenterNavbarContainer,
   LeftNavbarContainer,
   RightNavbarContainer,
   SubNavbarContainer,
-} from "./containers";
-import InteractiveSubContainer from "./spaces/toolbar";
-import UserSubContainer from "./spaces/user";
-import SearchSubContainer from "./spaces/search";
+} from "./containers/containers";
+import InteractiveSubContainer from "./containers/toolbar";
+import UserSubContainer from "./containers/user";
+import CenterContent from "./containers/center/container";
 
 export default function Navbar() {
   const { setDrawerOpen } = useDrawer();
@@ -22,11 +22,10 @@ export default function Navbar() {
             <LeftNavbarContainer>
               <MenuButton setDrawerOpen={setDrawerOpen} />
               <Logo />
-              <MiniLogo />
             </LeftNavbarContainer>
 
             <CenterNavbarContainer>
-              <SearchSubContainer />
+              <CenterContent />
             </CenterNavbarContainer>
 
             <RightNavbarContainer>

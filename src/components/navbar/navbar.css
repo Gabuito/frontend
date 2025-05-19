@@ -3,7 +3,7 @@
     @apply sticky top-0 left-0 z-20;
 
     &.colors {
-      @apply dark:bg-neutral-900 border-b border-slate-200 dark:border-none;
+      @apply bg-slate-50 dark:bg-neutral-900 border-b border-slate-200 dark:border-none;
     }
 
     &.responsive {

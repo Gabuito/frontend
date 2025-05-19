@@ -2,7 +2,7 @@ import { T } from "@/utils/types";
 
 export function LeftNavbarContainer({ children }: T["Node"]): T["Element"] {
   return (
-    <div className='flex flex-row items-center-safe gap-3 sm:gap-4 w-2/5 sm:w-1/4 ml-2'>
+    <div className='flex flex-row items-center-safe gap-3 sm:gap-4 w-fit px-2'>
       {children}
     </div>
   );
@@ -10,7 +10,7 @@ export function LeftNavbarContainer({ children }: T["Node"]): T["Element"] {
 
 export function CenterNavbarContainer({ children }: T["Node"]): T["Element"] {
   return (
-    <div className='hidden lg:flex items-center-safe justify-center-safe lg:w-1/2'>
+    <div className='hidden lg:flex items-center-safe justify-start w-full px-2 gap-2'>
       {children}
     </div>
   );
@@ -18,7 +18,7 @@ export function CenterNavbarContainer({ children }: T["Node"]): T["Element"] {
 
 export function RightNavbarContainer({ children }: T["Node"]): T["Element"] {
   return (
-    <div className='flex items-center-safe justify-end navbar-icon mr-4 gap-6 sm:gap-6 w-full lg:w-1/4'>
+    <div className='flex items-center-safe justify-end navbar-icon mr-4 gap-6 sm:gap-6 w-full lg:w-2/3'>
       {children}
     </div>
   );

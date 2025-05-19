@@ -12,14 +12,14 @@ export default function Selector({
   aria,
 }: SelectorProps) {
   function getButtonStyles(left: boolean) {
-    if (left) return "left-2 2xl:left-8";
-    return "right-2 2xl:right-8";
+    if (left) return "left-1 2xl:left-5";
+    return "right-1 2xl:right-5";
   }
 
   return (
     <button
       onClick={onClick}
-      className={`absolute z-10 bg-neutral-50 dark:bg-neutral-900 hover:bg-opacity-10 rounded px-2 py-8 flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 cursor-pointer ${getButtonStyles(
+      className={`absolute z-10 bg-neutral-50 dark:bg-neutral-900 hover:bg-opacity-10 rounded-full p-4 sm:p-2 flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 cursor-pointer ${getButtonStyles(
         left
       )}`}
       aria-label={aria}
